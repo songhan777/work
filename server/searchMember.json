@@ -1,0 +1,24 @@
+[
+  {
+    "img": "/static/images/remy.jpg",
+    "name": "欧尔迈特",
+    "tackId":1
+  },
+  {
+    "img": "/static/images/remy.jpg",
+    "name": "初代英雄",
+    "tackId":2
+
+  },
+  {
+    "img": "/static/images/remy.jpg",
+    "name": "初代英雄",
+    "tackId":3
+  },
+  {
+    "img": "/static/images/remy.jpg",
+    "name": "初代英雄",
+    "tackId":4
+  }
+]
+ 

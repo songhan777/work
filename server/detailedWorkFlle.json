@@ -1,0 +1,115 @@
+{
+  "template": [
+    {
+      "showName": "H",
+      "data": [
+        {
+          "name": "系统设计0",
+          "detailedTemplate": [
+            {
+              "templateName": " 系统规范设计12",
+              "templateDate":{
+                "color": 33333,
+                "name": 2222,
+                "out": 3,
+                "outVal": 4,
+                "in": 5,
+                "inVal": 6}
+            },{
+              "templateName": " 系统规范设计",
+              "templateDate":{
+                "color": 33333,
+                "name": 2222,
+                "out": 3,
+                "outVal": 4,
+                "in": 5,
+                "inVal": 6}
+            }
+          ]
+        },{
+          "name": "计算设计",
+          "detailedTemplate": [
+            {
+              "templateName": " 系统规范设计12",
+              "templateDate":{
+                "color": 33333,
+                "name": 2222,
+                "out": 3,
+                "outVal": 4,
+                "in": 5,
+                "inVal": 6}
+            },{
+              "templateName": " 系统规范设计",
+              "templateDate":{
+                "color": 33333,
+                "name": 2222,
+                "out": 3,
+                "outVal": 4,
+                "in": 5,
+                "inVal": 6}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "showName": "S",
+      "data": [
+        {
+          "name": "系统设计1",
+          "detailedTemplate": [
+            {
+              "templateName": " 系统规范设计34",
+              "templateDate":{
+                "color": 33333,
+                "name": 2222,
+                "out": 3,
+                "outVal": 4,
+                "in": 5,
+                "inVal": 6}
+            },{
+              "templateName": " 系统规范设计",
+              "templateDate":{
+                "color": 33333,
+                "name": 2222,
+                "out": 3,
+                "outVal": 4,
+                "in": 5,
+                "inVal": 6}
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "showName": "W",
+      "data": [
+        {
+          "name": "系统设计2",
+          "detailedTemplate": [
+            {
+              "templateName": " 系统规范设计56",
+              "templateDate":{
+                "color": 33333,
+                "name": 2222,
+                "out": 3,
+                "outVal": 4,
+                "in": 5,
+                "inVal": 6}
+            },{
+              "templateName": " 系统规范设计",
+              "templateDate":{
+                "color": 33333,
+                "name": 2222,
+                "out": 3,
+                "outVal": 4,
+                "in": 5,
+                "inVal": 6}
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "graphic": []
+}

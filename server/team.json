@@ -1,0 +1,80 @@
+{
+  "personageName": "姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名x ",
+  "personageImg": "static/images/uxceo-128.jpg",
+  "personageMailbox": "zhoujielun@126.com",
+  "teamNumber": 2,
+  "cooperatorNumber": 2,
+  "team": [
+    {
+      "taskId": 1,
+      "img": "/static/images/cards/contemplative-reptile.jpg",
+      "name": "姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名姓名",
+      "mailbox": "zhoujielun@126.com",
+      "node":"备注"
+    },
+    {
+      "taskId": 2,
+      "img": "/static/images/cards/contemplative-reptile.jpg",
+      "name": "姓名",
+      "mailbox": "zhoujielun@126.com",
+      "node":"备注"
+    },
+    {
+      "taskId": 3,
+      "img": "/static/images/cards/contemplative-reptile.jpg",
+      "name": "姓名",
+      "mailbox": "zhoujielun@126.com",
+      "node":"备注"
+    }
+  ],
+  "cooperator": [
+    {
+      "taskId": 1,
+      "teamImg": [
+        {
+          "img": "static/images/uxceo-128.jpg",
+          "name": "落雨",
+          "taskId": 2
+        },
+        {
+          "img": "static/images/uxceo-128.jpg",
+          "name": "落雨",
+          "taskId": 2
+        },
+        {
+          "img": "static/images/uxceo-128.jpg",
+          "name": "落雨",
+          "taskId": 2
+        }
+      ],
+      "teamName": "团队名称",
+      "cooperationNumber": 23,
+      "cooperatorNumber": 213,
+      "teamNumber": "000002"
+    },
+    {
+      "taskId": 2,
+      "teamImg": [
+        {
+          "img": "static/images/uxceo-128.jpg",
+          "name": "落雨",
+          "taskId": 2
+        },
+        {
+          "img": "static/images/uxceo-128.jpg",
+          "name": "落雨",
+          "taskId": 2
+        },
+        {
+          "img": "static/images/uxceo-128.jpg",
+          "name": "落雨",
+          "taskId": 2
+        }
+      ],
+      "teamName": "团队名称",
+      "cooperationNumber": 5,
+      "cooperatorNumber": 111,
+      "teamNumber": "000001"
+    }
+  ]
+}

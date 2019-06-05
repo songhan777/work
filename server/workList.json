@@ -1,0 +1,94 @@
+{
+  "workNumber":9,
+  "projectNumber":99,
+  "task": [
+    {
+      "number": "1",
+      "task": "计算",
+      "state": "正在进行时",
+      "stateTime": "2018/13//31",
+      "endTime": "2031/25/61",
+      "participant": 10
+    },
+    {
+      "number": "2",
+      "task": "计算",
+      "state": "正在进行时",
+      "stateTime": "2018/13//31",
+      "endTime": "2031/25/61",
+      "participant": 10
+    },
+    {
+      "number": "3",
+      "task": "计算",
+      "state": "正在进行时",
+      "stateTime": "2018/13//31",
+      "endTime": "2031/25/61",
+      "participant": 10
+    },
+    {
+      "number": "4",
+      "task": "计算",
+      "state": "正在进行时",
+      "stateTime": "2018/13//31",
+      "endTime": "2031/25/61",
+      "participant": 8
+    },
+    {
+      "number": "5",
+      "task": "计算",
+      "state": "正在进行时",
+      "stateTime": "2018/13//31",
+      "endTime": "2031/25/61",
+      "participant": 10
+    },
+    {
+      "number": "6",
+      "task": "吃饭",
+      "state": "完成",
+      "stateTime": "7018/13/31",
+      "endTime": "2356/25/61",
+      "participant": 5
+    },
+    {
+      "number": "7",
+      "task": "计算",
+      "state": "正在进行时",
+      "stateTime": "2018/13/31",
+      "endTime": "2031/25/61",
+      "participant": 10
+    },
+    {
+      "number": "8",
+      "task": "计算",
+      "state": "正在进行时",
+      "stateTime": "2018/13/31",
+      "endTime": "2031/25/61",
+      "participant": 10
+    },
+    {
+      "number": "90",
+      "task": "生成",
+      "state": "正在进行时",
+      "stateTime": "2018/13/31",
+      "endTime": "2031/25/61",
+      "participant": 10
+    },
+    {
+      "number": "11",
+      "task": "计算",
+      "state": "正在进行时",
+      "stateTime": "2018/13/31",
+      "endTime": "2031/25/61",
+      "participant": 10
+    },
+    {
+      "number": "12",
+      "task": "计算",
+      "state": "正在进行时",
+      "stateTime": "2018/13/31",
+      "endTime": "2031/25/61",
+      "participant": 10
+    }
+  ]
+}

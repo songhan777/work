@@ -1,0 +1,146 @@
+{
+  "img": "/static/images/uxceo-128.jpg",
+  "name": "数据获取项目",
+  "members": [
+    {
+      "name": "欧阳天",
+      "img": "/static/images/uxceo-128.jpg"
+    },
+    {
+      "name": "欧阳天",
+      "img": "/static/images/uxceo-128.jpg"
+    },
+    {
+      "name": "欧阳天",
+      "img": "/static/images/uxceo-128.jpg"
+    }
+  ],
+  "data": "2018/10/10",
+  "operationCalculateId": 12341243,
+  "workflow": [
+    {
+      "workflowId": 1,
+      "name": "super计算集",
+      "time": "2018/10/10",
+      "category": "生物",
+      "img": "/static/images/cards/contemplative-reptile.jpg",
+      "describe": "这是一个非常厉害的super计算集"
+    },
+    {
+      "workflowId": 2,
+      "name": "super计算集",
+      "time": "2018/10/10",
+      "category": "生物",
+      "img": "/static/images/cards/contemplative-reptile.jpg",
+      "describe": "这是一个非常厉害的super计算集"
+    },
+    {
+      "workflowId": 3,
+      "name": "super计算集",
+      "time": "2018/10/10",
+      "category": "生物",
+      "img": "/static/images/cards/contemplative-reptile.jpg",
+      "describe": "这是一个非常厉害的super计算集"
+    }
+  ],
+  "dataGather": [
+    {
+      "name": "第一个数据",
+      "date": "2018/10/10",
+      "dataSetId": 1
+    },
+    {
+      "name": "第一个数据",
+      "date": "2018/10/10",
+      "dataSetId": 2
+    },
+    {
+      "name": "第一个数据",
+      "date": "2018/10/10",
+      "dataSetId": 3
+    },
+    {
+      "name": "第一个数据",
+      "date": "2018/10/10",
+      "dataSetId": 4
+    },
+    {
+      "name": "第一个数据",
+      "date": "2018/10/10",
+      "dataSetId": 5
+    },
+    {
+      "name": "第一个数据",
+      "date": "2018/10/10",
+      "dataSetId": 6
+    },
+    {
+      "name": "第一个数据",
+      "date": "2018/10/10",
+      "dataSetId": 7
+    }
+  ],
+  "calculate": [
+    {
+      "calculateId": 1,
+      "name": "super计算集",
+      "data": "2018/10/10",
+      "category": "生物",
+      "img": "/static/images/cards/contemplative-reptile.jpg",
+      "describe": "这是一个非常厉害的super计算集"
+    },
+    {
+      "calculateId": 2,
+      "name": "super计算集",
+      "data": "2018/10/10",
+      "category": "生物",
+      "img": "/static/images/cards/contemplative-reptile.jpg",
+      "describe": "这是一个非常厉害的super计算集"
+    },
+    {
+      "calculateId": 3,
+      "name": "super计算集",
+      "data": "2018/10/10",
+      "category": "化工",
+      "img": "/static/images/cards/contemplative-reptile.jpg",
+      "describe": "这是一个非常厉害的super计算集"
+    }
+  ],
+  "member": [
+    {
+      "memberId": "00001",
+      "img": "/static/images/uxceo-128.jpg",
+      "name": "拉普拉斯",
+      "mailbox": "104034343@qq.com",
+      "rank": "成员"
+    },
+    {
+      "memberId": "000002",
+      "img": "/static/images/uxceo-128.jpg",
+      "name": "薛定谔",
+      "mailbox": "104034343@qq.com",
+      "rank": "成员"
+    },
+    {
+      "memberId": "000003",
+      "img": "/static/images/uxceo-128.jpg",
+      "name": "高斯",
+      "mailbox": "104034343@qq.com",
+      "rank": "创建者"
+    },
+    {
+      "memberId": "000004",
+      "img": "/static/images/uxceo-128.jpg",
+      "name": "霍普基斯",
+      "mailbox": "104034343@qq.com",
+      "rank": "成员"
+    },
+    {
+      "memberId": "000005",
+      "img": "/static/images/uxceo-128.jpg",
+      "name": "拉普拉斯",
+      "mailbox": "104034343@qq.com",
+      "rank": "成员"
+    }
+  ]
+}

@@ -1,0 +1,267 @@
+import Line from './line'
+import DisplayObject from './DisplayObject'
+const start_location = 60;
+const run_time = 800;
+export  default class Rect  extends  DisplayObject {
+    constructor(ele,id = null) {
+        super() 
+        this.minNode = ele //存取主节点的位置
+        this.node = ele //用来画当前方形的圆心
+        this.anastoleRect = true //用来为下一个触手的展开与否提供依据，只有本值是false(触手伸开)，下个触手才会开始展开
+        this.referenceLen = 140  //记录当前要达到最终伸展程度
+        this.tentacleStep = start_location  //用来保存每次触手伸展的步长
+        this.tiemr = false //定时器开启标志
+        this.index = null //记录当前触手的输入/输出端口排在第几位
+        this.portStr = null //记录当前的端口是输入还是输出
+        this.isCach = false 
+        this.cachCanvas = document.createElement("canvas")
+        this.cachContxt = this.cachCanvas.getContext("2d")
+        this._init() 
+    }
+    _init() {
+        this.factory() 
+    }
+    factory() {
+        const move = (self, point, container) => {
+            const line = new  Line(this, point)//在这里并没有对动态的线做来源处理，来源是In还是Out，Line(Out,In)
+            line.id = 'DLL'//动态的线，ID是DLL
+            container.addLine(line) 
+        }
+        const up = (self, point, container) => {
+            if (self.minNode == self.node) {
+                return 
+            }
+            container.moveConnectIo = {state:false,IO:null,ID:null}//将标志位,置回动画收回
+            //self.minNode.click = 0 //将标志位,置回动画收回
+            const emp = container.LinsTo 
+            const  ID = container.displayId 
+            if (ID !== null) {
+                //因为鼠标在矩形内松开也会触发这个函数，所以判断下
+                if (container.childNodes[ID] && emp.DLL) {
+                    container.childNodes[ID].click = 0
+                    container.displayId =self.minNode.id 
+                }
+            }
+            delete emp.DLL 
+            this.remove('mouseGrageMove', move) 
+        }
+        this.on('mousedown', (self, point, container) => {
+            if (self.minNode == self.node) {
+                return 
+            }
+            if (!this.anastoleRect) {//当前的触手是伸开的，在全局上记录一个标示位，代表着我要开始拖动线了，各个节点准备好，我拖到谁那，谁给我弹出我要的IO
+                container.moveConnectIo = {state:true,IO:this.portStr,ID:this.minNode.id}
+            }
+            this.on('mouseGrageMove', move) 
+            this.on('mouseGrageUp', up) //鼠标在矩形以外的任意位置up事件
+        })
+
+        this.on('mouseup', (self, point, container) => {
+            if (self.minNode == self.node) {
+                return 
+            }
+            let ID = container.moveConnectIo.ID //获取发射节点的ID
+            container.moveConnectIo = {state:false,IO:null,ID:null}//将标志位,置回动画收回
+            self.minNode.click = 0 //将标志位,置回动画收回
+            container.displayId = ID 
+            const lines = container.LinsTo 
+            let line = container.LinsTo.DLL 
+            if (line == undefined) {
+                const emp = container.LinsTo 
+                delete emp.DLL 
+                this.remove('mouseGrageMove', move) 
+                return 
+            }
+            line.id = line.createOwnId() 
+            if (this.portStr == 'In' && line.from.portStr == 'Out') {//判断当前矩形是输入点
+                line.to = self 
+            } else if (this.portStr == 'Out'&& line.from.portStr == 'In') {//判断当前矩形是输出点
+                line.to = line.from 
+                line.from = self
+            } else {// 输入没有连接输出或输出没有连接输入，当前模型可能是输出连接输出，或输入连接输入
+                line  = null 
+                return  
+            }
+            // 判断当前线线段已经连接过了
+            for ( const key in lines) {
+                if (key !== 'DLL' && lines[key].from.id == line.from.id && lines[key].to.id == line.to.id) {
+                    line = null 
+                    break 
+                }
+            } 
+            //判断是否是自己连接自己，例如节点A的输入连接节点A的输出；
+            if (line.from.minNode.id == line.to.minNode.id) {
+                line = null 
+            }
+            line != null ? container.addLine(line) : null 
+        })
+    }
+    _setTimeoutSen(index, str, length) {
+        //每次累加，将值赋值——locationInfo
+        //按照每次浏览器绘制间隔为16ms来计算步长
+        const step = this.referenceLen*(30/(run_time/length).toFixed(2)) 
+        this.tentacleStep += step 
+        //判断当值达到最大值时,并将触手状态重置为伸展状态
+        if (this.tentacleStep >= this.referenceLen) {
+            this.tentacleStep = this.referenceLen 
+            this.anastoleRect = false
+            this.node = this._locationInfo(index, str, this.tentacleStep)
+            if (index == length-1) {
+                return false
+            }
+        }
+        this.node = this._locationInfo(index, str, this.tentacleStep)
+            return true
+    }
+    _setTimeoutBack(index, str, length) {
+        //每次累加，将值赋值——locationInfo
+        const step = this.referenceLen*(30/(run_time/length).toFixed(2)) //按照每次浏览器绘制间隔为16ms来计算步长
+        this.tentacleStep -= step 
+        //判断当值达到最大值时,并将触手状态重置为伸展状态
+        if (this.tentacleStep <= start_location) {
+            this.tentacleStep = start_location
+            this.anastoleRect = true
+            this.node = this.minNode 
+            if (index == length-1) {
+                return false
+            }
+        }
+        this.node = this._locationInfo(index, str, this.tentacleStep)
+            return true 
+
+   }
+    _locationInfo(index, str, g) {
+        //let  g = this.presentLen 
+         let point = {}
+        //当原点坐标为0,0时，各个触手的位置,可能因为arc画圆的原因坐标轴正负颠倒了
+        if(str == 'In'){
+            switch (index) {
+                case 0:
+                point = {x:-(5/6).toFixed(2)*g, y:0}
+                break
+                case 1:
+                point = {x:-(2/3).toFixed(2)*g, y:(1/3).toFixed(2)*g}
+                break 
+                case 2:
+                point = {x:-(2/3).toFixed(2)*g, y:-(1/3).toFixed(2)*g}
+                break 
+                case 3:
+                point = {x:-(1/3).toFixed(2)*g, y:(2/3).toFixed(2)*g}
+                break 
+                case 4:
+                point = {x:-(1/3).toFixed(2)*g, y:-(2/3).toFixed(2)*g}
+                break 
+                case 5:
+                point = {x:0, y:(5/6).toFixed(2)*g}
+                break 
+            }
+        } else {
+            switch (index) {
+                case 0:
+                point = {x:(5/6).toFixed(2)*g, y:0}
+                break 
+                case 1:
+                point = {x:(2/3).toFixed(2)*g, y:(1/3).toFixed(2)*g}
+                break 
+                case 2:
+                point = {x:(2/3).toFixed(2)*g, y:-(1/3).toFixed(2)*g}
+                break 
+                case 3:
+                point = {x:(1/3).toFixed(2)*g, y:(2/3).toFixed(2)*g}
+                break 
+                case 4:
+                point = {x:(1/3).toFixed(2)*g, y:-(2/3).toFixed(2)*g}
+                break 
+                case 5:
+                point = {x:0, y:-(5/6).toFixed(2)*g}
+                break 
+            }
+        }
+        //加上原点坐标
+        point = {x:point.x+this.minNode.x, y:point.y+this.minNode.y}
+        return point 
+    }
+    draw(self, index, str){
+        this.index = index 
+        this.portStr= str 
+         const length = self[str+'Ary'].length 
+         const _draw_small  = (str) => {
+            if (index == 0) {
+                if (this.anastoleRect) {//当前触手是缩回的
+                    //告诉当前工作区，这里正在执行触手的动画，通过一标志位来实现
+                    self.animtionState = this._setTimeoutSen(index, str, length)//setTimeOut里动态算当前点的坐标
+                } else {//伸展出来了
+                    //获取固定的位置
+                    this.node = this._locationInfo(index, str, this.referenceLen) 
+                }
+            } else {
+                 const ID = self[str+'Ary'][index-1] 
+                 const flg = self[str][ID].anastoleRect 
+                if (!flg && this.anastoleRect) {//判断上一个触手完全展开了,并且当前触手没有展开
+                    self.animtionState = this._setTimeoutSen(index, str, length) //，如果定时没开，设置定时器
+                } else if(flg){//上一个触手是缩回的状态
+                    this.node  = this.minNode 
+                } else {
+                    this.node = this._locationInfo(index, str, this.referenceLen) //当前节点顺序的固定位置
+                }
+            }
+       }
+
+        if (this.context == null) {
+            this.context = self.context 
+            this.canvas = self.canvas 
+        }
+        if (self.anastole) {//收缩状态
+            if (index === 0) {//第一个触手
+                if (!this.anastoleRect) {//当前触手是伸展状态
+                    //告诉当前工作区，这里正在执行触手的动画，通过一标志位来实现
+                    self.animtionState = this._setTimeoutBack(index, str, length) //setTimeOut里动态算出当前坐标
+                } else {
+                    this.node  = this.minNode 
+                } 
+
+            } else {
+                 const ID  = self[str+'Ary'][index-1] 
+                 const flg = self[str][ID].anastoleRect 
+                if (flg && !this.anastoleRect) {
+                    self.animtionState = this._setTimeoutBack(index, str, length)
+                } else if (!flg) {
+                    this.node=this._locationInfo(index, str, this.referenceLen) 
+                } else {
+                    this.node  = this.minNode 
+                }
+            }
+            //this.node  = this.minNode  
+        } else {//伸展状态
+            _draw_small(str) 
+        }
+        if (this.isCach) {
+            this.context.drawImage(this.cachCanvas, this.node.x-20, this.node.y-20);
+        } else {
+            this.cachContxt.beginPath() 
+            this.cachContxt.fillStyle='rgba(132, 134, 144, 1)' 
+            this.cachContxt.moveTo(20, (20+20)) 
+            this.cachContxt.lineTo((20+20), 20) 
+            this.cachContxt.lineTo(20, (20-20)) 
+            this.cachContxt.lineTo((20-20), 20) 
+            this.cachContxt.fill() 
+            this.cachContxt.closePath() 
+            this.isCach = true 
+        }
+
+    }
+    hasPoint(point) {
+        this.lastState =this.nowState 
+        if (point.x == null || point.y == null) {
+            return false 
+        }
+         const distance = Math.abs((point.x-this.node.x)*40/2) +Math.abs((point.y-this.node.y)*40/2)<40*40/4 
+        if (distance  == true) {
+            this.nowState = true 
+            return true 
+        } else {
+            this.nowState = false 
+            return false 
+        }
+    }
+}
